@@ -47,6 +47,21 @@ public class KataStringCalculatorTest {
 	@Test
 	public void method_adding_an_unknown_amount_of_numbers() {
 		Assert.assertEquals("Should return sum", 23, calc.add("9,8,6"));
+		Assert.assertEquals("Should return sum", -23, calc.add("-10,-20,7"));
+		Assert.assertEquals("Should return sum", 0, calc.add("2,2,5,-9"));
+	}
+	
+	@Test
+	public void method_adding_an_unknown_amount_of_numbers_separated_by_newline() {
+		Assert.assertEquals("Should return sum", 23, calc.add("9\n8\n6"));
+		Assert.assertEquals("Should return sum", -23, calc.add("-10\n-20\n7"));
+		Assert.assertEquals("Should return sum", 0, calc.add("2\n2\n5\n-9"));
+	}
+	
+	@Test
+	public void method_adding_an_unknown_amount_of_numbers_separated_by_any_delimiter() {
+		Assert.assertEquals("Should return sum", 3, calc.add("//;\n1;2"));
+		Assert.assertEquals("Should return sum", 13, calc.add("//!\n4!9"));
 	}
 	
 	

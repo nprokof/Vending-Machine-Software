@@ -18,10 +18,35 @@ public class KataStringCalculator {
 		
 		else {
 			
+			String text = numbers.replaceAll("[^a-zA-Z0-9-]", ",");
+			System.out.println(text);
+			String help = "";
+			String done = "";
+			for(int i = 0; i < text.length() - 1; i++) {
+				if (text.charAt(i) != ',' || (text.charAt(i) == ',' && text.charAt(i + 1) != ',' )) {
+					help+=text.charAt(i);
+
+					
+				}
+
+			}
+			if (text.charAt(text.length() -1) != ',') {
+				help+= text.charAt(text.length() -1);
+			}
+			if (text.charAt(0) == ',') {
+				done = help.substring(1);
+			}
+			System.out.println(help);
+			System.out.println(done);;
+			
 			List<String> list = new ArrayList<String>();
 			
-			list = Arrays.asList(numbers.split(","));
+			list = Arrays.asList(done.split(","));
 			Stack<String> theStack = new Stack<String>();
+			for(String s : list) {
+				System.out.println(s);
+			}
+			
 			int[] nums = new int[list.size()];
 			
 			for (String s : list) {
@@ -31,7 +56,7 @@ public class KataStringCalculator {
 			for (int i = 0; i < list.size(); i++) {
 				nums[i]= Integer.parseInt(theStack.pop());
 				result += nums[i];
-				System.out.println(nums[i]);
+//				System.out.println(nums[i]);
 			}
 
 		}
