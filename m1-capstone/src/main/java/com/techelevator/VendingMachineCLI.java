@@ -66,7 +66,7 @@ public class VendingMachineCLI {
 	
 	
 	public static void main(String[] args) {
-		VendBank currentBank = new VendBank();
+		VendBank currectBank = new VendBank();
 		Menu menu = new Menu(System.in, System.out);
 		VendingMachineCLI cli = new VendingMachineCLI(menu);
 		cli.run();
