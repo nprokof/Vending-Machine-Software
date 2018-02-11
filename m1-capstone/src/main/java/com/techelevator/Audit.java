@@ -12,45 +12,37 @@ import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Audit {
-
 	
-	public void auditMe ()   {
-	Scanner in = new Scanner(System.in);
-
-	String basepath = "/Users/aprokofyeva/Development/team7-java-week4-pair-exercise/m1-capstone";
+	private String transactionName;
+	private double amount;
+	private double balance;
 	
-	String newDir = basepath + "AuditRecord";
-	
-	//Create a directory
-	File dirFileObject = new File(newDir);
-
-	if (dirFileObject.exists() == false) {
-		dirFileObject.mkdir();
+	public Audit(String transactionName, double amount, double balance) {
+		this.transactionName = transactionName;
+		this.amount = amount;
+		this.balance = balance;
 	}
+
 	
-	String newFilePath = newDir + "/Log.txt";
-	
-	//Create a file
-	File fileFileObject = new File(newFilePath);
-	
-	if (fileFileObject.exists() == false) {
-		fileFileObject.createNewFile();
+	public void logTransaction () throws IOException   {
+			
+		//get local time
+		LocalDateTime currentDateTime = LocalDateTime.now();
+		
+		//Create file object
+		String filePath = "/Users/aprokofyeva/Development/team7-java-week4-pair-exercise/m1-capstone/Log.txt";
+		File fileFileObject = new File(filePath);
+		
+		try(FileWriter fileWriter = new FileWriter(fileFileObject .getAbsoluteFile(), true);
+			BufferedWriter bufferedFileWriter = new BufferedWriter(fileWriter);
+			) {
+			//Print a formatted line in the log
+			bufferedFileWriter.write(currentDateTime.format(DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss a")) + String.format(("%-22s%-22s%-22s\n"), transactionName, amount, balance));
+		
+			bufferedFileWriter.flush();
 		}
 	
-	//get local time
-	LocalDateTime currentDateTime = LocalDateTime.now();
-	//create string to hold transaction, item, $cost, $total
-	String formattedEntry = "";
-	
-	try(FileWriter fileWriter = new FileWriter(fileFileObject.getAbsoluteFile(), true);
-		BufferedWriter bufferedFileWriter = new BufferedWriter(fileWriter);
-			) {
-		bufferedFileWriter.write(currentDateTime.format(DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss a")) + formattedEntry);
-		
-		bufferedFileWriter.flush();
 	}
-	
-}
 
 }
 
