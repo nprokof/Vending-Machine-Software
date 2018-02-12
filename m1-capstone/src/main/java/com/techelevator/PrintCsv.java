@@ -14,18 +14,25 @@ public class PrintCsv {
 		
 		File inventory = new File(path);
 	
+		String printOut = null;
+		
 		try(BufferedReader reader = new BufferedReader(new FileReader(inventory))){
 			String line = reader.readLine();
-			String printOut = null;
+			
 			//String delimiter = "|";
 			while(line != null) {
-				for (int i = 0; i < line.length(); i++) {
+				//for (int i = 0; i < line.length(); i++) {
 					printOut += (line + "\n");
-				}
 			}
+		}
+		
 		System.out.println(printOut);
 		
-		}
 	}
- 
+	
+	public void makeEatingSound() {
+		
+	}
 }
+ 
+

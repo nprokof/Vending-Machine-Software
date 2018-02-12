@@ -55,16 +55,32 @@ public class VendingMachineCLI {
 			//System.out.println(\ngetBal());
 			
 			if (choice.equals(PURCHASE_MENU_OPTION_FEED_MONEY)) {
-				System.out.print("\nEnter whole dollar amount >>>");
+				System.out.print("\nEnter whole dollar amount >>> ");
 				Scanner in  = new Scanner(System.in);
-				int dollarInput = in.nextInt();
-				currentBank.add(dollarInput);
+				double input = in.nextDouble();
+				int dollarInput = (int) Math.round(input);
+				if (dollarInput < 0) {
+					System.out.println("\nNegative amounts are not valid. Please try again!");
+					System.out.println("");
+					System.out.println("");
+					break;
+				}
+				
+				//random eating of bills
+				double random = (Math.random() * 100);
+				if (random > 40.00 && random < 50.00) {
+					System.out.println("ghrzhzzz... ghrzhzzz... ");
+				
+				}
+				else {
+					currentBank.add(dollarInput);
+				}
 			}
 			else if (choice.equals(PURCHASE_MENU_OPTION_SELECT_PRODUCT)) {
 				//SELECT ID, call method from Inventory to print selection, call method from VendBank to print balance
 				//select/input id
 				System.out.println(currentBank.getBal());
-				System.out.print("\nEnter selection >>>");
+				System.out.print("\nEnter selection >>> ");
 				Scanner in = new Scanner(System.in);
 				String purchaseSelection = in.nextLine();
 				//if code does not exist - print error, go back to purchase menu
