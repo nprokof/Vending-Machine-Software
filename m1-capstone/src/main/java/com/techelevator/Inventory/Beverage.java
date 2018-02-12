@@ -2,6 +2,11 @@ package com.techelevator.Inventory;
 
 public abstract class Beverage extends Inventory {
 	
+	public String makeNoise() {
+		return "Glug Glug, Yum!";
+	}
+	
+	/*
 	private String itemName = "";
 	private String price = "";
 
@@ -29,5 +34,6 @@ public abstract class Beverage extends Inventory {
 
 
 	public abstract void readCSV();
+	*/
 
 }
