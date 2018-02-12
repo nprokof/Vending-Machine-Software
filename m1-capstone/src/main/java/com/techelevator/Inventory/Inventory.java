@@ -8,28 +8,29 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.techelevator.VendBank;
+
 public class Inventory {
 
 	Map<String, Popper> prodMap = new HashMap<String, Popper>();
-	
+//	VendBank currentBank = new VendBank();
+
 	Popper one = new BOne();
+	
 	
 	public Inventory() {
 		prodMap.put("B1", one);	
 	}
 	
-	public void test() {
-		one.popIt();
+	public void makePurchase(String input) {
+		prodMap.get(input).popIt();
 	}
 	
-	Object purchase = null;
-	
-
-	
-	public void makePurchase() {
-		prodMap.get("B1").popIt();
-
+	public double debitBal(String input) {
+		return (prodMap.get(input).priceIt());
 	}
+	
+	
 	
 	
 	

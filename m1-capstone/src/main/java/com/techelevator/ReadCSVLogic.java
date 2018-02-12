@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class readCSVLogic {
+public class ReadCSVLogic {
 	
 	public String vendList = "";
 	public String displayProd() {

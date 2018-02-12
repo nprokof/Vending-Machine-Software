@@ -3,7 +3,7 @@ package com.techelevator.Inventory;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.techelevator.readCSVLogic;
+import com.techelevator.ReadCSVLogic;
 
 public abstract class Candy extends Inventory {
 	
@@ -11,15 +11,19 @@ public abstract class Candy extends Inventory {
 //		Object stuff = makePurchase();
 //	}
 
-	readCSVLogic prodInfo = new readCSVLogic();	
-	BOne one = new BOne();
-	String purchased = "";
+	ReadCSVLogic prodInfo = new ReadCSVLogic();	
 	
+	//BOne one = new BOne();
+	//String purchased = "";
+	
+	/*
 	static Map<String, Object> prodMap = new HashMap<String, Object>();
 	
 	public Candy() {
 		prodMap.put("B1", one);	
 	}
+	*/
+	//public abstract void bOne();
 	
 //	public static Object makePurchase() {
 //		return prodMap.get("B1");
@@ -51,7 +55,7 @@ public abstract class Candy extends Inventory {
 //	}
 
 
-	public abstract void bOne();
+	
 
 
 

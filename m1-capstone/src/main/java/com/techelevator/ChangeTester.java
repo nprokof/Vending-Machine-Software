@@ -23,7 +23,7 @@ public class ChangeTester {
 		
 
 		
-		readCSVLogic stuff = new readCSVLogic();
+		ReadCSVLogic stuff = new ReadCSVLogic();
 		
 		double firstDouble = Double.parseDouble(stuff.createProdList().get(0)[2]);
 		

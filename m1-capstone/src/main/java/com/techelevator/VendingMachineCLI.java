@@ -2,6 +2,8 @@ package com.techelevator;
 
 import java.util.Scanner;
 
+import com.techelevator.Inventory.BOne;
+import com.techelevator.Inventory.Inventory;
 import com.techelevator.view.Menu;
 
 public class VendingMachineCLI {
@@ -23,6 +25,9 @@ public class VendingMachineCLI {
 	}
 	
 	VendBank currentBank = new VendBank();
+	ReadCSVLogic currentCsv = new ReadCSVLogic();
+	Inventory productsInventory = new Inventory();
+//	BOne Test = new BOne();
 	
 	//run - display main menu
 	public void run() {
@@ -39,7 +44,7 @@ public class VendingMachineCLI {
 			String choice = (String)menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
 			
 			if(choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
-				//call method from Inventory to read CSV file
+				System.out.println(currentCsv.displayProd());
 			} 
 			else if(choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
 				purchaseMenu();
@@ -52,7 +57,7 @@ public class VendingMachineCLI {
 	
 		while (true) {
 			String choice = (String)menu.getChoiceFromOptions(PURCHASE_MENU_OPTIONS);
-			//System.out.println(\ngetBal());
+			
 			
 			if (choice.equals(PURCHASE_MENU_OPTION_FEED_MONEY)) {
 				System.out.print("\nEnter whole dollar amount >>> ");
@@ -79,15 +84,20 @@ public class VendingMachineCLI {
 			else if (choice.equals(PURCHASE_MENU_OPTION_SELECT_PRODUCT)) {
 				//SELECT ID, call method from Inventory to print selection, call method from VendBank to print balance
 				//select/input id
-				System.out.println(currentBank.getBal());
+				//System.out.println(currentBank.getBal());
 				System.out.print("\nEnter selection >>> ");
 				Scanner in = new Scanner(System.in);
 				String purchaseSelection = in.nextLine();
+				productsInventory.makePurchase(purchaseSelection);
+				currentBank.subtract(productsInventory.debitBal(purchaseSelection));
+				System.out.println(productsInventory.debitBal(purchaseSelection));
+				
+//				System.out.println(Test.sizeIt());
 				//if code does not exist - print error, go back to purchase menu
 				//if a product is sold out - print message, go back to purchase menu
 				//if a valid product is selected - print dispense message
 				//call VendBank to update balance
-				currentBank.subtract(1);
+				System.out.println("\n" + currentBank.getBal());
 				purchaseMenu();
 			}
 			else if (choice.equals(PURCHASE_MENU_OPTION_FINISH_TRANSACTION)) {
