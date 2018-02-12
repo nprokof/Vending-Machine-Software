@@ -4,7 +4,7 @@ import java.util.Stack;
 
 import com.techelevator.ReadCSVLogic;
 
-public class AOne extends Candy implements Popper{
+public class AOne extends Chips implements Popper{
 
 	Stack<String> potatoCrisps = new Stack<String>();
 

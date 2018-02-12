@@ -4,9 +4,9 @@ import java.util.Stack;
 
 import com.techelevator.ReadCSVLogic;
 
-public class ATwo extends Chips implements Popper {
+public class BFour extends Candy implements Popper {
 	
-	Stack<String> stackers = new Stack<String>();
+	Stack<String> crunchie = new Stack<String>();
 
 	ReadCSVLogic prodInfo = new ReadCSVLogic();
 	
@@ -14,23 +14,23 @@ public class ATwo extends Chips implements Popper {
 	private Double price = 0.0;
 	
 	public String getItemName() {
-		itemName = prodInfo.createProdList().get(1)[1];
+		itemName = prodInfo.createProdList().get(7)[1];
 		return itemName;
 	}
 
-	public ATwo() {
+	public BFour() {
 		
-		stackers.push(itemName);
-		stackers.push(itemName);
-		stackers.push(itemName);
-		stackers.push(itemName);
-		stackers.push(itemName);
+		crunchie.push(itemName);
+		crunchie.push(itemName);
+		crunchie.push(itemName);
+		crunchie.push(itemName);
+		crunchie.push(itemName);
 	}
 
 	@Override
 	public void popIt() {
-		if (stackers.size() >0) {
-			stackers.pop();
+		if (crunchie.size() >0) {
+			crunchie.pop();
 		} else {
 			System.out.println("There are no more dummy!");
 		}	
@@ -38,20 +38,21 @@ public class ATwo extends Chips implements Popper {
 
 	@Override
 	public int sizeIt() {
-		int size = stackers.size();
+		int size = crunchie.size();
 		return size;
 	}
 
 	@Override
 	public double priceIt() {
-		price = Double.parseDouble(prodInfo.createProdList().get(1)[2]);
+		price = Double.parseDouble(prodInfo.createProdList().get(7)[2]);
 		return price;
 	}
 
 	@Override
 	public String nameIt() {
-		itemName = prodInfo.createProdList().get(1)[1];
+		itemName = prodInfo.createProdList().get(7)[1];
 		return itemName;
 	}
 
 }
+
