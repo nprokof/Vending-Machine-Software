@@ -14,11 +14,41 @@ public class Inventory {
 
 	Map<String, Popper> prodMap = new HashMap<String, Popper>();
 //	VendBank currentBank = new VendBank();
-
-	BOne one = new BOne();
+	
+	AOne a1 = new AOne();
+	ATwo a2 = new ATwo();
+	AThree a3 = new AThree();
+	AFour a4 = new AFour();
+	BOne b1 = new BOne();
+	BTwo b2 = new BTwo();
+	BThree b3 = new BThree();
+	BFour b4 = new BFour();
+	COne c1 = new COne();
+	CTwo c2 = new CTwo();
+	CThree c3 = new CThree();
+	CFour c4 = new CFour();
+	DOne d1 = new DOne();
+	DTwo d2 = new DTwo();
+	DThree d3 = new DThree();
+	DFour d4 = new DFour();
 	
 	public Inventory() {
-		prodMap.put("B1", one);	
+		prodMap.put("A1", a1);
+		prodMap.put("A2", a2);
+		prodMap.put("A3", a3);
+		prodMap.put("A4", a4);
+		prodMap.put("B1", b1);
+		prodMap.put("B2", b2);
+		prodMap.put("B3", b3);
+		prodMap.put("B4", b4);
+		prodMap.put("C1", c1);
+		prodMap.put("C2", c2);
+		prodMap.put("C3", c3);
+		prodMap.put("C4", c4);
+		prodMap.put("D1", d1);
+		prodMap.put("D2", d2);
+		prodMap.put("D3", d3);
+		prodMap.put("D4", d4);
 	}
 	
 	public boolean slotCheck(String input) {
@@ -36,9 +66,10 @@ public class Inventory {
 	public String piggyPal(String input) {
 		
 		if (prodMap.get(input) instanceof BOne) {
-			BOne one = (BOne)prodMap.get(input);
-			return one.makeNoise();
+			BOne b1 = (BOne)prodMap.get(input);
+			return b1.makeNoise();
 		}
+
 		
 		return null;
 		//return null;
