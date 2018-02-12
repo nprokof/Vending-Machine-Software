@@ -13,13 +13,14 @@ public class VendBank {
 	}
 	public void subtract(double cost) {
 		currentBal -= cost;
+		//call audit pass info. should be on inventory.
 	}
 	public String change() {
 		String message = "";
 	
 		Coins change = new Coins();
 //		change.calculateChg(currentBal);
-		message = "Your change is: \n";
+		message = "\nYour change is: \n";
 		for (Coin coin : change.calculateChg(currentBal).keySet()) {
 			message += String.valueOf(change.calculateChg(currentBal).get(coin)) + 
 					" " + coin.getName() + "(s) \n";
