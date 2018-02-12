@@ -49,7 +49,7 @@ public class ReadCSVLogic {
 			while ((line = bufferedReader.readLine()) != null) {
 				prodInfo = line.split("\\|");
 				prodList.add(prodInfo);
-//				fileReader.close();
+
 			}
 			
 		} catch (IOException e) {

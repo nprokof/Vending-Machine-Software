@@ -4,9 +4,9 @@ import java.util.Stack;
 
 import com.techelevator.ReadCSVLogic;
 
-public class BOne extends Candy implements Popper {
+public class AFour extends Chips implements Popper {
 	
-	Stack<String> moonPie = new Stack<String>();
+	Stack<String> cloudPopcorn = new Stack<String>();
 
 	ReadCSVLogic prodInfo = new ReadCSVLogic();
 	
@@ -14,23 +14,23 @@ public class BOne extends Candy implements Popper {
 	private Double price = 0.0;
 	
 	public String getItemName() {
-		itemName = prodInfo.createProdList().get(4)[1];
+		itemName = prodInfo.createProdList().get(3)[1];
 		return itemName;
 	}
 
-	public BOne() {
+	public AFour() {
 		
-		moonPie.push(itemName);
-		moonPie.push(itemName);
-		moonPie.push(itemName);
-		moonPie.push(itemName);
-		moonPie.push(itemName);
+		cloudPopcorn.push(itemName);
+		cloudPopcorn.push(itemName);
+		cloudPopcorn.push(itemName);
+		cloudPopcorn.push(itemName);
+		cloudPopcorn.push(itemName);
 	}
 
 	@Override
 	public void popIt() {
-		if (moonPie.size() >0) {
-			moonPie.pop();
+		if (cloudPopcorn.size() >0) {
+			cloudPopcorn.pop();
 		} else {
 			System.out.println("There are no more dummy!");
 		}	
@@ -38,19 +38,20 @@ public class BOne extends Candy implements Popper {
 
 	@Override
 	public int sizeIt() {
-		int size = moonPie.size();
+		int size = cloudPopcorn.size();
 		return size;
 	}
 
 	@Override
 	public double priceIt() {
-		price = Double.parseDouble(prodInfo.createProdList().get(4)[2]);
+		price = Double.parseDouble(prodInfo.createProdList().get(3)[2]);
 		return price;
 	}
 
 	@Override
 	public String nameIt() {
-		itemName = prodInfo.createProdList().get(4)[1];
+		itemName = prodInfo.createProdList().get(3)[1];
 		return itemName;
 	}
+
 }

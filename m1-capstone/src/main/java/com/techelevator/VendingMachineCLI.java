@@ -29,7 +29,7 @@ public class VendingMachineCLI {
 	ReadCSVLogic currentCsv = new ReadCSVLogic();
 	Inventory productsInventory = new Inventory();
 	Audit currentLog = new Audit();
-//	BOne Test = new BOne();
+
 	
 	//run - display main menu
 	public void run() throws IOException {
@@ -58,10 +58,8 @@ public class VendingMachineCLI {
 	
 	//purchase - display menu 2
 	public void purchaseMenu() throws IOException {
-	
-		boolean isLooping = true;
-		
-		while (isLooping) {
+
+		while (true) {
 			String choice = (String)menu.getChoiceFromOptions(PURCHASE_MENU_OPTIONS);
 			System.out.println("\nCurrent Balance: $" + currentBank.getBal());
 			
@@ -88,44 +86,52 @@ public class VendingMachineCLI {
 				}
 				double balance = currentBank.getBal();
 				currentLog.logTransaction("FEED MONEY:", input, balance);
-				System.out.println("\nCurrent Balance: $" + currentBank.getBal());
+				System.out.println("\nCurrent Balance: $" + String.format( "%.2f", currentBank.getBal()));
 			}
 			else if (choice.equals(PURCHASE_MENU_OPTION_SELECT_PRODUCT)) {
+				
 				//SELECT ID, call method from Inventory to print selection, call method from VendBank to print balance
 				//select/input id
-				//System.out.println(currentBank.getBal());
 				System.out.print("\nEnter selection >>> ");
 				Scanner in = new Scanner(System.in);
-				String purchaseSelection = in.nextLine();
+				String rawSelection = in.nextLine();
+				String purchaseSelection = rawSelection.toUpperCase();
+				
+				//if code does not exist - print error, go back to purchase menu
 				if (productsInventory.slotCheck(purchaseSelection) == false) {
 					System.out.println("Product does not exist, please try again!");
 				}
+				if(productsInventory.stackSize(purchaseSelection) > 0 && currentBank.getBal() >= productsInventory.debitBal(purchaseSelection)) {
+					productsInventory.makePurchase(purchaseSelection);
+					
+					//if a valid product is selected - print dispense message
+					System.out.println("\nPrice of your item..., Piggy: $" + productsInventory.debitBal(purchaseSelection));
+					System.out.println(productsInventory.piggyPal(purchaseSelection));
+					
+					//call VendBank to update balance
+					currentBank.subtract(productsInventory.debitBal(purchaseSelection));
+					double balance = currentBank.getBal();
+					currentLog.logTransaction(productsInventory.snackName(purchaseSelection) + " " + purchaseSelection, productsInventory.debitBal(purchaseSelection) , balance);
+
+				}
+				else if(currentBank.getBal() < productsInventory.debitBal(purchaseSelection)) {
+					System.out.println("You do not have enough funds, pauper!");
+				}
 				
-				productsInventory.makePurchase(purchaseSelection);
-				System.out.println("\nPrice of your item..., Piggy: $" + productsInventory.debitBal(purchaseSelection));
-				System.out.println(productsInventory.piggyPal(purchaseSelection));
-				currentBank.subtract(productsInventory.debitBal(purchaseSelection));
-				double balance = currentBank.getBal();
-				currentLog.logTransaction(productsInventory.snackName(purchaseSelection) + " " + purchaseSelection, productsInventory.debitBal(purchaseSelection) , balance);
-//				System.out.println(Test.sizeIt());
-				//if code does not exist - print error, go back to purchase menu
 				//if a product is sold out - print message, go back to purchase menu
-				//if a valid product is selected - print dispense message
-				//call VendBank to update balance
-//				System.out.println("\n" + currentBank.getBal());
-				//purchaseMenu();
+				else {	
+					System.out.println("That selection is SOLD OUT, uh doyEEEE!");
+				}
 			}
+			
 			else if (choice.equals(PURCHASE_MENU_OPTION_FINISH_TRANSACTION)) {
+				
 				//call VendBank change() & call VendBank to verify/reset balance to $0
 				double balance = currentBank.getBal();
 				currentLog.logTransaction("GIVE CHANGE: ", balance, 0.00d);
 				System.out.println(currentBank.change());
 				break;
 
-				//call Inventory subclass piggyNoises()
-				//exit program
-//				isLooping = false;
-				
 			}
 		} 
 	}
