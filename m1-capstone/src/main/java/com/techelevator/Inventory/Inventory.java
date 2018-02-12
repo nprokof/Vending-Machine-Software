@@ -15,8 +15,7 @@ public class Inventory {
 	Map<String, Popper> prodMap = new HashMap<String, Popper>();
 //	VendBank currentBank = new VendBank();
 
-	Popper one = new BOne();
-	
+	BOne one = new BOne();
 	
 	public Inventory() {
 		prodMap.put("B1", one);	
@@ -28,6 +27,21 @@ public class Inventory {
 	
 	public double debitBal(String input) {
 		return (prodMap.get(input).priceIt());
+	}
+	
+	public String piggyPal(String input) {
+		
+		if (prodMap.get(input) instanceof BOne) {
+			BOne one = (BOne)prodMap.get(input);
+			return one.makeNoise();
+		}
+		
+		return null;
+		//return null;
+	}
+	
+	public String snackName(String input) {
+		return (prodMap.get(input).nameIt());
 	}
 	
 	

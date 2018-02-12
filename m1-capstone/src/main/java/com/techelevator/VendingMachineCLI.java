@@ -1,5 +1,6 @@
 package com.techelevator;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 import com.techelevator.Inventory.BOne;
@@ -27,10 +28,11 @@ public class VendingMachineCLI {
 	VendBank currentBank = new VendBank();
 	ReadCSVLogic currentCsv = new ReadCSVLogic();
 	Inventory productsInventory = new Inventory();
+	Audit currentLog = new Audit();
 //	BOne Test = new BOne();
 	
 	//run - display main menu
-	public void run() {
+	public void run() throws IOException {
 		
 		while(true) {
 			
@@ -53,24 +55,26 @@ public class VendingMachineCLI {
 	}
 	
 	//purchase - display menu 2
-	public void purchaseMenu() {
+	public void purchaseMenu() throws IOException {
 	
-		while (true) {
+		boolean isLooping = true;
+		
+		while (isLooping) {
 			String choice = (String)menu.getChoiceFromOptions(PURCHASE_MENU_OPTIONS);
-			
+			System.out.println("\nCurrent Balance: $" + currentBank.getBal());
 			
 			if (choice.equals(PURCHASE_MENU_OPTION_FEED_MONEY)) {
 				System.out.print("\nEnter whole dollar amount >>> ");
 				Scanner in  = new Scanner(System.in);
 				double input = in.nextDouble();
 				int dollarInput = (int) Math.round(input);
+				
 				if (dollarInput < 0) {
 					System.out.println("\nNegative amounts are not valid. Please try again!");
 					System.out.println("");
 					System.out.println("");
 					break;
 				}
-				
 				//random eating of bills
 				double random = (Math.random() * 100);
 				if (random > 40.00 && random < 50.00) {
@@ -80,6 +84,9 @@ public class VendingMachineCLI {
 				else {
 					currentBank.add(dollarInput);
 				}
+				double balance = currentBank.getBal();
+				currentLog.logTransaction("FEED MONEY:", input, balance);
+				System.out.println("\nCurrent Balance: $" + currentBank.getBal());
 			}
 			else if (choice.equals(PURCHASE_MENU_OPTION_SELECT_PRODUCT)) {
 				//SELECT ID, call method from Inventory to print selection, call method from VendBank to print balance
@@ -89,28 +96,35 @@ public class VendingMachineCLI {
 				Scanner in = new Scanner(System.in);
 				String purchaseSelection = in.nextLine();
 				productsInventory.makePurchase(purchaseSelection);
+				System.out.println("\nPrice of your item..., Piggy: $" + productsInventory.debitBal(purchaseSelection));
+				System.out.println(productsInventory.piggyPal(purchaseSelection));
 				currentBank.subtract(productsInventory.debitBal(purchaseSelection));
-				System.out.println(productsInventory.debitBal(purchaseSelection));
-				
+				double balance = currentBank.getBal();
+				currentLog.logTransaction(productsInventory.snackName(purchaseSelection) + " " + purchaseSelection, productsInventory.debitBal(purchaseSelection) , balance);
 //				System.out.println(Test.sizeIt());
 				//if code does not exist - print error, go back to purchase menu
 				//if a product is sold out - print message, go back to purchase menu
 				//if a valid product is selected - print dispense message
 				//call VendBank to update balance
-				System.out.println("\n" + currentBank.getBal());
+//				System.out.println("\n" + currentBank.getBal());
 				purchaseMenu();
 			}
 			else if (choice.equals(PURCHASE_MENU_OPTION_FINISH_TRANSACTION)) {
 				//call VendBank change() & call VendBank to verify/reset balance to $0
+				double balance = currentBank.getBal();
+				currentLog.logTransaction("GIVE CHANGE: ", balance, 0.00d);
 				System.out.println(currentBank.change());
+				
+
 				//call Inventory subclass piggyNoises()
 				//exit program
-				break;
+//				isLooping = false;
+				
 			}
-		}
+		} 
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		
 		Menu menu = new Menu(System.in, System.out);
 		VendingMachineCLI cli = new VendingMachineCLI(menu);

@@ -5,13 +5,20 @@ import java.util.Map;
 
 import com.techelevator.ReadCSVLogic;
 
-public abstract class Candy extends Inventory {
+public class Candy{
+	
+	public String makeNoise() {
+		return "Munch Munch, Yum!";
+	}
+	
+	
+	
 	
 //	public static void main(String[] args) {
 //		Object stuff = makePurchase();
 //	}
 
-	ReadCSVLogic prodInfo = new ReadCSVLogic();	
+	
 	
 	//BOne one = new BOne();
 	//String purchased = "";

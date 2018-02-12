@@ -8,5 +8,7 @@ public interface Popper {
 	
 	public double priceIt();
 	
+	public String nameIt();
+	
 }
 

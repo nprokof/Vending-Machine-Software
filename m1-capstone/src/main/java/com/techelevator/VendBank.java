@@ -9,7 +9,7 @@ public class VendBank {
 	}
 	public void add(int dollar) {
 		currentBal+= (double) dollar;
-		//call audit pass info.
+		
 	}
 	public void subtract(double cost) {
 		currentBal -= cost;

@@ -4,7 +4,7 @@ import java.util.Stack;
 
 import com.techelevator.ReadCSVLogic;
 
-public class BOne implements Popper {
+public class BOne extends Candy implements Popper {
 	
 	Stack<String> moonPie = new Stack<String>();
 
@@ -71,6 +71,12 @@ public class BOne implements Popper {
 	public double priceIt() {
 		price = Double.parseDouble(prodInfo.createProdList().get(4)[2]);
 		return price;
+	}
+
+	@Override
+	public String nameIt() {
+		itemName = prodInfo.createProdList().get(4)[1];
+		return itemName;
 	}
 
 
