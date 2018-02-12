@@ -21,7 +21,7 @@ public class readCSVLogic {
 			while ((line = bufferedReader.readLine()) != null) {
 				stringBuffer.append(line);
 				stringBuffer.append("\n");
-				fileReader.close();
+//				fileReader.close();
 				vendList = stringBuffer.toString();
 			}
 			
@@ -47,7 +47,7 @@ public class readCSVLogic {
 			while ((line = bufferedReader.readLine()) != null) {
 				prodInfo = line.split("\\|");
 				prodList.add(prodInfo);
-				fileReader.close();
+//				fileReader.close();
 			}
 			
 		} catch (IOException e) {
