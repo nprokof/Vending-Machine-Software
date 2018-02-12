@@ -1,7 +1,12 @@
 package com.techelevator.Inventory;
 
-public abstract class Chips extends Inventory {
+public class Chips {
 	
+	public String makeNoise() {
+		return "Crunch Crunch, Yum!";
+	}
+	
+	/*
 	private String itemName = "";
 	private String price = "";
 	
@@ -25,5 +30,6 @@ public abstract class Chips extends Inventory {
 
 	
 	public abstract void readCSV();
+	*/
 	
 }

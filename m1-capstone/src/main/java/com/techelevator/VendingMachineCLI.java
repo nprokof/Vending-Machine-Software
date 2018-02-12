@@ -46,6 +46,8 @@ public class VendingMachineCLI {
 			String choice = (String)menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
 			
 			if(choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
+				System.out.println("");
+				System.out.println("Today's yummy options:");
 				System.out.println(currentCsv.displayProd());
 			} 
 			else if(choice.equals(MAIN_MENU_OPTION_PURCHASE)) {

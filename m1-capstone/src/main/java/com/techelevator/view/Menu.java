@@ -47,7 +47,7 @@ public class Menu {
 			int optionNum = i+1;
 			out.println(optionNum+") "+options[i]);
 		}
-		out.print("\nPlease choose an option >>> ");
+		out.print("\nEnter your choice here >>> ");
 		out.flush();
 	}
 }
