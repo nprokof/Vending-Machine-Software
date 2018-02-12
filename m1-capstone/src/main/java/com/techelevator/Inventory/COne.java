@@ -14,7 +14,7 @@ private String itemName = null;
 private Double price = 0.0;
 
 public String getItemName() {
-	itemName = prodInfo.createProdList().get(4)[1];
+	itemName = prodInfo.createProdList().get(8)[1];
 	return itemName;
 }
 	
