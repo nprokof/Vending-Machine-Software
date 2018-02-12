@@ -28,7 +28,7 @@ public class Audit {
 		LocalDateTime currentDateTime = LocalDateTime.now();
 		
 		//Create file object
-		String filePath = "/Users/pconfer/Development/Log.txt";
+		String filePath = "Log.txt";
 		File fileFileObject = new File(filePath);
 		
 		try(FileWriter fileWriter = new FileWriter(fileFileObject .getAbsoluteFile(), true);

@@ -78,7 +78,7 @@ public class VendingMachineCLI {
 				//random eating of bills
 				double random = (Math.random() * 100);
 				if (random > 40.00 && random < 50.00) {
-					System.out.println("ghrzhzzz... ghrzhzzz... ");
+					System.out.println("ghrzhzzz... ghrzhzzz... Thanks for the money, chump!");
 				
 				}
 				else {
@@ -95,6 +95,10 @@ public class VendingMachineCLI {
 				System.out.print("\nEnter selection >>> ");
 				Scanner in = new Scanner(System.in);
 				String purchaseSelection = in.nextLine();
+				if (productsInventory.slotCheck(purchaseSelection) == false) {
+					System.out.println("Product does not exist, please try again!");
+				}
+				
 				productsInventory.makePurchase(purchaseSelection);
 				System.out.println("\nPrice of your item..., Piggy: $" + productsInventory.debitBal(purchaseSelection));
 				System.out.println(productsInventory.piggyPal(purchaseSelection));
@@ -107,14 +111,14 @@ public class VendingMachineCLI {
 				//if a valid product is selected - print dispense message
 				//call VendBank to update balance
 //				System.out.println("\n" + currentBank.getBal());
-				purchaseMenu();
+				//purchaseMenu();
 			}
 			else if (choice.equals(PURCHASE_MENU_OPTION_FINISH_TRANSACTION)) {
 				//call VendBank change() & call VendBank to verify/reset balance to $0
 				double balance = currentBank.getBal();
 				currentLog.logTransaction("GIVE CHANGE: ", balance, 0.00d);
 				System.out.println(currentBank.change());
-				
+				break;
 
 				//call Inventory subclass piggyNoises()
 				//exit program

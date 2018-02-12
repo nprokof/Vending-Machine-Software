@@ -21,6 +21,10 @@ public class Inventory {
 		prodMap.put("B1", one);	
 	}
 	
+	public boolean slotCheck(String input) {
+		return prodMap.containsKey(input);
+	}
+	
 	public void makePurchase(String input) {
 		prodMap.get(input).popIt();
 	}
