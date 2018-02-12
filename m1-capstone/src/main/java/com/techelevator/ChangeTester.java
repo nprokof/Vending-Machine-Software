@@ -1,5 +1,7 @@
 package com.techelevator;
 
+import com.techelevator.Inventory.Candy;
+import com.techelevator.Inventory.*;
 public class ChangeTester {
 
 	
@@ -15,16 +17,22 @@ public class ChangeTester {
 //		System.out.println(bank.change());
 		
 
-				
+//		Candy candyTest = new Candy();
 		
+		Inventory helper = new Inventory();
+		
+
 		
 		readCSVLogic stuff = new readCSVLogic();
 		
 		double firstDouble = Double.parseDouble(stuff.createProdList().get(0)[2]);
 		
-		System.out.println(firstDouble);
+		String firstName = stuff.createProdList().get(0)[1];
 		
-		System.out.println(stuff.displayProd());
+		System.out.println(firstDouble);
+		System.out.println(firstName);
+		
+
 	
 
 	}

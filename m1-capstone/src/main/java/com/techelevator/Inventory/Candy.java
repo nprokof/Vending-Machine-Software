@@ -1,56 +1,58 @@
 package com.techelevator.Inventory;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import com.techelevator.readCSVLogic;
+
 public abstract class Candy extends Inventory {
 	
-	public abstract void readCSV();
+//	public static void main(String[] args) {
+//		Object stuff = makePurchase();
+//	}
+
+	readCSVLogic prodInfo = new readCSVLogic();	
+	BOne one = new BOne();
+	String purchased = "";
 	
-	private String itemName = "";
-	private String price = "";
-		
-	public String getItemName() {
-		return itemName;
-	}
-	public void setItemName(String itemName) {
-		this.itemName = itemName;
-	}
-	public String getPrice() {
-		return price;
-	}
-	public void setPrice(String price) {
-		this.price = price;
-	}
-
-
-	public void bOne() {
-		String itemName = "";
-		String price = "";
-		
-		String[] candyBOne = new String[3];
-		
+	static Map<String, Object> prodMap = new HashMap<String, Object>();
+	
+	public Candy() {
+		prodMap.put("B1", one);	
 	}
 	
-	public void bTwo() {
-		String itemName = "";
-		String price = "";
-		
-		String[] candyBTwo = new String[3];
-	}
+//	public static Object makePurchase() {
+//		return prodMap.get("B1");
+//	}
 	
-	public void bThree() {
-		String itemName = "";
-		String price = "";
-		
-		String[] candyBthree = new String[3];
-
-	}
+	//public static Object makePurchase() {
+	//return prodMap.get("B1").method;
 	
-	public void bFour() {
-		String itemName = "";
-		String price = "";
-		
-		String[] candyBFour = new String[3];
+	
+	
+	//	public abstract void readCSV();
+	
+//	private String itemName = "";
+//	private String price = "";
+	
 
-	}
+		
+//	public String getItemName() {
+//		return itemName;
+//	}
+//	public void setItemName(String itemName) {
+//		this.itemName = itemName;
+//	}
+//	public String getPrice() {
+//		return price;
+//	}
+//	public void setPrice(String price) {
+//		this.price = price;
+//	}
+
+
+	public abstract void bOne();
+
 
 
 	
