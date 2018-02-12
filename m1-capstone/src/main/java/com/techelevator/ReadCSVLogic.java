@@ -12,7 +12,7 @@ public class ReadCSVLogic {
 	public String displayProd() {
 		try {
 			
-			File inputFile = new File("/Users/pconfer/team7-java-week4-pair-exercise/m1-capstone/vendingmachine.csv");
+			File inputFile = new File("/Users/bhelton/Development/PairExercises/java-week4-pair-exercise/team7-java-week4-pair-exercise/m1-capstone/vendingmachine.csv");
 			FileReader fileReader = new FileReader(inputFile);
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
 			StringBuffer stringBuffer = new StringBuffer();
@@ -38,7 +38,7 @@ public class ReadCSVLogic {
 		ArrayList<String[]> prodList = new ArrayList<String[]>();
 		try {
 	
-			File inputFile = new File("/Users/pconfer/team7-java-week4-pair-exercise/m1-capstone/vendingmachine.csv");
+			File inputFile = new File("/Users/bhelton/Development/PairExercises/java-week4-pair-exercise/team7-java-week4-pair-exercise/m1-capstone/vendingmachine.csv");
 			FileReader fileReader = new FileReader(inputFile);
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
 			String line = "";

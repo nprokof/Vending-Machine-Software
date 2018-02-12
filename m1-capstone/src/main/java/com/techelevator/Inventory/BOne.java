@@ -17,18 +17,6 @@ public class BOne extends Candy implements Popper {
 		itemName = prodInfo.createProdList().get(4)[1];
 		return itemName;
 	}
-	
-//	public Double getPrice() {
-//		
-//	}
-
-	//@Override
-	//public void bOne() {
-
-		//price = Double.parseDouble(prodInfo.createProdList().get(4)[2]);
-		//itemName = prodInfo.createProdList().get(4)[1];
-	
-	//}	
 
 	public BOne() {
 		
@@ -38,17 +26,6 @@ public class BOne extends Candy implements Popper {
 		moonPie.push(itemName);
 		moonPie.push(itemName);
 	}
-//public void moonPie() {
-//		
-//	}
-	
-
-
-//	@Override
-//	public void readCSV() {
-//		// TODO Auto-generated method stub
-//		
-//	}
 
 	@Override
 	public void popIt() {
@@ -56,9 +33,7 @@ public class BOne extends Candy implements Popper {
 			moonPie.pop();
 		} else {
 			System.out.println("There are no more dummy!");
-		}
-		
-		
+		}	
 	}
 
 	@Override
@@ -78,7 +53,4 @@ public class BOne extends Candy implements Popper {
 		itemName = prodInfo.createProdList().get(4)[1];
 		return itemName;
 	}
-
-
-
 }
