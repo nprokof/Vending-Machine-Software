@@ -48,9 +48,13 @@ public class VendingMachineCLI {
 			if(choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
 				System.out.println("");
 				System.out.println("Today's yummy options:");
+				System.out.println("-----------------------");
+				System.out.println("");
 				System.out.println(currentCsv.displayProd());
 			} 
 			else if(choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
+				System.out.println("");
+				System.out.println("-----------------------------------");
 				purchaseMenu();
 			}
 		}
@@ -92,10 +96,11 @@ public class VendingMachineCLI {
 				
 				//SELECT ID, call method from Inventory to print selection, call method from VendBank to print balance
 				//select/input id
-				System.out.print("\nEnter selection >>> ");
+				System.out.print("\nEnter your purchase selection >>> ");
 				Scanner in = new Scanner(System.in);
 				String rawSelection = in.nextLine();
 				String purchaseSelection = rawSelection.toUpperCase();
+				
 				
 				//if code does not exist - print error, go back to purchase menu
 				if (productsInventory.slotCheck(purchaseSelection) == false) {
